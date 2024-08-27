@@ -23,8 +23,12 @@ export class ImcCalculatorController {
   }
 
   @Post('calculate')
-  @Render('imc.hbs')
   calculate(@Body() request: ImcCalculatorRequest) {
     return this.imcCalcService.calculateAndTranslate(request);
+  }
+  @Get('form')
+  @Render('imc.hbs')
+  getForm() {
+    return { data: this.imcCalcService.getTable() };
   }
 }
